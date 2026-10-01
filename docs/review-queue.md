@@ -818,7 +818,7 @@ later the Jekyll build of the raw tree — which won, so the root 404ed and
 none exists; it does not change an existing branch-mode site to Actions
 mode. That is one setting, once, by hand: Settings → Pages → Build and
 deployment → Source → **GitHub Actions**. After that only the workflow
-deploys, and the site is at https://minn-hai-lab.github.io/MINN-HAI-LAB-WEBSITE/.
+deploys, and the site is at https://minn-hai-lab.github.io/.
 
 ---
 

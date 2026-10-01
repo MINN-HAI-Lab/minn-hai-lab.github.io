@@ -54,7 +54,7 @@ test('the header nav goes to each page', async ({ page }) => {
 
 test('learning links out to StatLab and its source', async ({ page }) => {
   await page.goto('/learning');
-  await expect(page.locator('#learning a:has-text("Open StatLab")')).toHaveAttribute('href', 'https://minn-hai-lab.github.io/statLab/index.html');
+  await expect(page.locator('#learning a:has-text("Open StatLab")')).toHaveAttribute('href', 'https://minn-hai-lab.github.io/statLab/');
   await expect(page.locator('#learning a:has-text("Source code")')).toHaveAttribute('href', 'https://github.com/MINN-HAI-Lab/statLab_Codes');
   await expect(page.locator('[data-mh-tab]')).toHaveCount(0);
 });

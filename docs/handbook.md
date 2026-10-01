@@ -31,9 +31,14 @@ npm run verify     # build, serve on 4331, run tests/site.spec.ts
 
 ## Hosting on GitHub Pages
 
-Live at https://minn-hai-lab.github.io/MINN-HAI-LAB-WEBSITE/ since
-2026-09-14. `.github/workflows/deploy.yml` builds the site and publishes
-`dist/` on every push to `main` (or by hand from the Actions tab).
+Live at https://minn-hai-lab.github.io/, served from the root because the
+repository is named `minn-hai-lab.github.io`. It was at
+`/MINN-HAI-LAB-WEBSITE/` from 2026-09-14 until that rename.
+
+`.github/workflows/deploy.yml` builds the site and publishes `dist/` on every
+push to `main` (or by hand from the Actions tab). It derives `BASE_PATH` and
+`SITE_URL` from the repository name, so a rename moves the site without a
+source change; locally `BASE_PATH` defaults to `/`.
 
 The setup that was needed, for the record: Settings → Pages → Source must be
 **GitHub Actions**. In "Deploy from a branch" mode GitHub's own Jekyll build
