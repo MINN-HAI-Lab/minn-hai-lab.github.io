@@ -12,10 +12,36 @@
  * and text as var()s, its field themed from inside mh-bg.js itself.
  */
 import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+/* Collaborating institutions. The logos in public/collaborations/ are trimmed to
+   their own content and normalised to one height, so a wide wordmark and a compact
+   mark carry the same optical weight in the same box. */
+const collaborators = [
+  { name: 'Institut Polytechnique de Paris', place: 'France', logo: 'ip-paris.png' },
+  { name: 'Inria Saclay', place: 'France', logo: 'inria.png' },
+  { name: 'National Institute of Informatics (NII)', place: 'Japan', logo: 'nii.png' },
+  { name: 'University of Montreal', place: 'Canada', logo: 'montreal.png' },
+  { name: 'University of Quebec', place: 'Canada', logo: 'quebec.png' },
+];
 ---
 
 <Layout title="Partner with us — MINN HAI Lab">
 <div style="background:var(--field);padding-top:96px">
+  <div class="mh-gutter" id="collaborations" style="padding:44px;border-bottom:1px solid rgba(var(--ink-rgb),.1);display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px"><h3 style="margin:0;font-family:Literata,serif;font-weight:400;font-size:30px;letter-spacing:-.015em">Collaborations</h3><span style="font-size:12.5px;color:rgba(var(--ink-rgb),.5)">Partner institutions</span></div>
+    <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);max-width:70ch">We work with colleagues at the following institutions.</p>
+    <ul style="list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px 20px">
+      {collaborators.map((c) => (
+        <li style="display:flex;flex-direction:column;gap:10px">
+          <span style="display:flex;align-items:center;justify-content:flex-start;height:76px;padding:14px 18px;background:rgb(239,241,242);border-radius:2px"><img src={`${base}/collaborations/${c.logo}`} alt={c.name} loading="lazy" style="max-height:100%;max-width:100%;width:auto;object-fit:contain" /></span>
+          <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:13.5px;line-height:1.35;color:rgba(var(--ink-rgb),.78)">{c.name}</span><span style="font-size:12.5px;color:rgba(var(--ink-rgb),.45)">{c.place}</span></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
   <div class="mh-gutter" id="funding" style="padding:44px;border-bottom:1px solid rgba(var(--ink-rgb),.1);display:flex;flex-direction:column;gap:20px">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px"><h3 style="margin:0;font-family:Literata,serif;font-weight:400;font-size:30px;letter-spacing:-.015em">Funding</h3><span style="font-size:12.5px;color:rgba(var(--ink-rgb),.5)">Sponsors and funding agencies</span></div>
     <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);max-width:70ch">We would like to thank the following sponsors and funding agencies for supporting our research.</p>
