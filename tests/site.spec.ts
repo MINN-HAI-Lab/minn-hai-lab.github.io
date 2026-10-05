@@ -48,8 +48,12 @@ test('the header nav goes to each page', async ({ page }) => {
   await expect(page).toHaveURL(/\/learning\/?$/);
   await page.locator('.mh-hero-nav a:has-text("Members")').click();
   await expect(page).toHaveURL(/\/members\/?$/);
-  await page.locator('.mh-hero-nav a:has-text("Partner with us")').click();
+  await page.locator('.mh-hero-nav a:has-text("Collaborations")').click();
   await expect(page).toHaveURL(/\/partner\/?$/);
+  // Join Lab leaves the site for the application form, so check it rather than follow it
+  const join = page.locator('.mh-hero-nav a:has-text("Join Lab")');
+  await expect(join).toHaveAttribute('href', 'https://forms.gle/UQpNsfC2UsKvSPwh6');
+  await expect(join).toHaveAttribute('target', '_blank');
 });
 
 test('learning links out to StatLab and its source', async ({ page }) => {
