@@ -53,7 +53,7 @@ test('the header nav goes to each page', async ({ page }) => {
   await page.locator('.mh-hero-nav a:has-text("Join the Lab")').click();
   await expect(page).toHaveURL(/\/join\/?$/);
   // the form itself is off-site, so check the link rather than follow it
-  const form = page.locator('#join a:has-text("application form")');
+  const form = page.locator('#join a:has-text("Expression of Interest Form")');
   await expect(form).toHaveAttribute('href', 'https://forms.gle/UQpNsfC2UsKvSPwh6');
   await expect(form).toHaveAttribute('target', '_blank');
 });
